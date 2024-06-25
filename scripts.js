@@ -1,3 +1,30 @@
+let numInputOne;
+let numInputTwo;
+let operatorInput;
+
+function operate(numOne, numTwo, operator) {
+    let result = 0;
+    switch (operator) {
+        case "+":
+            result = add(numOne, numTwo);
+            break;
+        case "-":
+            result = subtract(numOne, numTwo);
+            break;
+        case "*":
+            result = multiply(numOne, numTwo);
+            break;
+        case "/":
+            result = divide(numOne, numTwo);
+            break;
+        default:
+            console.error("function operate: Given operator was not valid");
+            break;
+    }
+
+    return result;
+}
+
 function add(numOne, numTwo) {
     return numOne + numTwo;
 }
