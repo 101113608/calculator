@@ -1,0 +1,88 @@
+* {
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+}
+
+html,
+body {
+    /* Flex container properties */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100%;
+    margin: 0;
+
+}
+
+.calculator {
+    /* Flex container properties */
+    display: flex;
+    flex-direction: column;
+
+    height: 600px;
+    width: 400px;
+    border: 10px outset lightgray;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.screen-area {
+    /* Flex item properties */
+    flex: 1 1 auto;
+
+    /* Flex container properties */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    font-size: 50px;
+    min-height: 150px;
+    background-color: lightgray;
+    border: 10px groove white;
+}
+
+.buttons-area {
+    /* Flex item properties */
+    flex-grow: 4;
+
+    /* Flex container properties */
+    display: flex;
+}
+
+.number-buttons {
+    /* Flex item properties */
+    flex-grow: 5;
+
+    /* Flex container properties */
+    display: flex;
+    flex-direction: column;
+}
+
+.number-buttons .row {
+    /* Flex item properties */
+    flex: 1;
+
+    /* Flex container properties */
+    display: flex;
+}
+
+.operator-buttons {
+    /* Flex item properties */
+    flex: 1 1 auto;
+
+    /* Flex container properties */
+    display: flex;
+    flex-direction: column;
+}
+
+.operator-buttons button,
+.number-buttons .row button {
+    /* Flex item properties */
+    flex: 1 1 0;
+
+    font-size: 30px;
+    border-color: lightgrey;
+}
