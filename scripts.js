@@ -1,7 +1,9 @@
 let numInputOne;
 let numInputTwo;
 let operatorInput;
+let calcDisplay = "0";
 
+const screenArea = document.querySelector(".screen-area");
 const buttonsArea = document.querySelector(".buttons-area");
 
 buttonsArea.addEventListener("click", (e) => {
@@ -11,6 +13,10 @@ buttonsArea.addEventListener("click", (e) => {
         - Update calculator number depending on button clicked
     */
 })
+
+function updateCalcDisplay() {
+    screenArea.textContent = calcDisplay;
+}
 
 function operate(numOne, numTwo, operator) {
     let result = 0;
