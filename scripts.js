@@ -13,8 +13,8 @@ window.addEventListener("load", (e) => {
 })
 
 buttonsArea.addEventListener("click", (e) => {
-    if (Number(e.target.id) || Number(e.target.id) === 0) {
-        changeCalcNumber(e.target.id);
+    if (Number(e.target.value) || Number(e.target.value) === 0) {
+        changeCalcNumber(e.target.value);
     }
 })
 
