@@ -2,6 +2,16 @@ let numInputOne;
 let numInputTwo;
 let operatorInput;
 
+const buttonsArea = document.querySelector(".buttons-area");
+
+buttonsArea.addEventListener("click", (e) => {
+    /*
+    TODO: 
+        - Get value from button that was clicked
+        - Update calculator number depending on button clicked
+    */
+})
+
 function operate(numOne, numTwo, operator) {
     let result = 0;
     switch (operator) {
