@@ -6,6 +6,10 @@ let calcDisplay = "0";
 const screenArea = document.querySelector(".screen-area");
 const buttonsArea = document.querySelector(".buttons-area");
 
+window.addEventListener("load", (e) => {
+    updateCalcDisplay();
+})
+
 buttonsArea.addEventListener("click", (e) => {
     /*
     TODO: 
