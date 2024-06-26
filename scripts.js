@@ -1,13 +1,13 @@
 let numInputOne;
 let numInputTwo;
 let operatorInput;
-let calcDisplay = "0";
+let calcNumber = "0";
 
 const screenArea = document.querySelector(".screen-area");
 const buttonsArea = document.querySelector(".buttons-area");
 
 window.addEventListener("load", (e) => {
-    updateCalcDisplay();
+    updateScreenText();
 })
 
 buttonsArea.addEventListener("click", (e) => {
@@ -18,8 +18,8 @@ buttonsArea.addEventListener("click", (e) => {
     */
 })
 
-function updateCalcDisplay() {
-    screenArea.textContent = calcDisplay;
+function updateScreenText() {
+    screenArea.textContent = calcNumber;
 }
 
 function operate(numOne, numTwo, operator) {
