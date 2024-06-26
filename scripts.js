@@ -3,6 +3,8 @@ let numInputTwo;
 let operatorInput;
 let calcNumber = "0";
 
+const MAX_CALC_NUM_LENGTH = 9;
+
 const screenArea = document.querySelector(".screen-area");
 const buttonsArea = document.querySelector(".buttons-area");
 
@@ -11,15 +13,25 @@ window.addEventListener("load", (e) => {
 })
 
 buttonsArea.addEventListener("click", (e) => {
-    /*
-    TODO: 
-        - Get value from button that was clicked
-        - Update calculator number depending on button clicked
-    */
+    if (Number(e.target.id) || Number(e.target.id) === 0) {
+        changeCalcNumber(e.target.id);
+    }
 })
 
 function updateScreenText() {
     screenArea.textContent = calcNumber;
+}
+
+function changeCalcNumber(inputNumber) {
+    if (calcNumber.length < MAX_CALC_NUM_LENGTH) {
+        if (calcNumber === "0" && inputNumber != "0") {
+            calcNumber = inputNumber;
+        }
+        else if (calcNumber !== "0") {
+            calcNumber = calcNumber.concat(inputNumber);
+        }
+        updateScreenText();
+    }
 }
 
 function operate(numOne, numTwo, operator) {
