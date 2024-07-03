@@ -51,13 +51,13 @@ function updateScreenText() {
     screenArea.textContent = calculation.displayNum;
 }
 
-function changeDisplayNum(inputNumber) {
+function changeDisplayNum(inputNum) {
     if (calculation.displayNum.length < MAX_CALC_NUM_LENGTH) {
-        if (calculation.displayNum === "0" && inputNumber != "0") {
-            calculation.displayNum = inputNumber;
+        if (calculation.displayNum === "0" && inputNum != "0") {
+            calculation.displayNum = inputNum;
         }
         else if (calculation.displayNum !== "0") {
-            calculation.displayNum = calculation.displayNum.concat(inputNumber);
+            calculation.displayNum = calculation.displayNum.concat(inputNum);
         }
         updateScreenText();
     }
