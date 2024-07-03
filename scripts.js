@@ -24,6 +24,11 @@ const calculation = {
                 result = multiply(numOne, numTwo);
                 break;
             case "/":
+                if (numTwo === 0) {
+                    alert("You cannot do that :l");
+                    result = NaN;
+                    break;
+                }
                 result = divide(numOne, numTwo);
                 break;
             default:
