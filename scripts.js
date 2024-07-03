@@ -1,7 +1,13 @@
-let numInputOne;
-let numInputTwo;
-let operatorInput;
-let displayNum = "0";
+const calculation = {
+    displayNum: "0",
+    cacheNum: null,
+    operator: null,
+    set: function(cacheNum, operator, displayNum = this.displayNum) {
+        this.cacheNum = cacheNum;
+        this.operator = operator;
+        this.displayNum = displayNum;
+    }
+}
 
 const MAX_CALC_NUM_LENGTH = 9;
 
@@ -19,16 +25,16 @@ buttonsArea.addEventListener("click", (e) => {
 })
 
 function updateScreenText() {
-    screenArea.textContent = displayNum;
+    screenArea.textContent = calculation.displayNum;
 }
 
 function changeDisplayNum(inputNumber) {
-    if (displayNum.length < MAX_CALC_NUM_LENGTH) {
-        if (displayNum === "0" && inputNumber != "0") {
-            displayNum = inputNumber;
+    if (calculation.displayNum.length < MAX_CALC_NUM_LENGTH) {
+        if (calculation.displayNum === "0" && inputNumber != "0") {
+            calculation.displayNum = inputNumber;
         }
-        else if (displayNum !== "0") {
-            displayNum = displayNum.concat(inputNumber);
+        else if (calculation.displayNum !== "0") {
+            calculation.displayNum = calculation.displayNum.concat(inputNumber);
         }
         updateScreenText();
     }
