@@ -46,25 +46,26 @@ window.addEventListener("load", (e) => {
 })
 
 buttonsArea.addEventListener("click", (e) => {
+    let input = e.target.value ? e.target.value : e.target.id;
 
     // Number button
-    if (isDigit(e.target.value)) {
+    if (isDigit(input)) {
         if (resetDisplayNum) {
             calculation.displayNum = "0";
             resetDisplayNum = false;
         }
-        changeDisplayNum(e.target.value);
+        changeDisplayNum(input);
         return;
     }
 
     // Math operator buttons
-    if (mathOperators.includes(e.target.value)) {
+    if (mathOperators.includes(input)) {
         if (!calculation.cacheNum && !calculation.operator) {
-            calculation.set(calculation.displayNum, e.target.value);
+            calculation.set(calculation.displayNum, input);
         } else {
             calculation.displayNum = calculation.operate();
             updateScreenText();
-            calculation.set(calculation.displayNum, e.target.value);
+            calculation.set(calculation.displayNum, input);
         }
 
         resetDisplayNum = true;
@@ -72,7 +73,7 @@ buttonsArea.addEventListener("click", (e) => {
     }
 
     // Clear button
-    if (e.target.id === "clear") {
+    if (input === "clear") {
         calculation.set(null, null, "0");
         updateScreenText();
 
