@@ -51,6 +51,7 @@ let resetDisplayNum = false;
 
 const screenArea = document.querySelector(".screen-area");
 const buttonsArea = document.querySelector(".buttons-area");
+const decimalBtn = buttonsArea.querySelector("#decimal");
 
 window.addEventListener("load", (e) => {
     updateScreenText();
@@ -66,6 +67,21 @@ buttonsArea.addEventListener("click", (e) => {
             resetDisplayNum = false;
         }
         changeDisplayNum(input);
+
+        return;
+    }
+
+    // Decimal button
+    if (input === ".") {
+        if (resetDisplayNum) {
+            calculation.displayNum = "0.";
+            resetDisplayNum = false;
+        } else if (!calculation.displayNum.includes(".")) {
+            calculation.displayNum += ".";
+        }
+        decimalBtn.disabled = true;
+        updateScreenText();
+
         return;
     }
 
@@ -78,8 +94,9 @@ buttonsArea.addEventListener("click", (e) => {
             updateScreenText();
             calculation.set(calculation.displayNum, input);
         }
-
         resetDisplayNum = true;
+        decimalBtn.disabled = false;
+
         return;
     }
 
@@ -88,14 +105,17 @@ buttonsArea.addEventListener("click", (e) => {
         if (calculation.cacheNum && calculation.operator) {
             calculation.set(null, null, calculation.operate());
             updateScreenText();
+            decimalBtn.disabled = false;
             resetDisplayNum = true;
         }
+
         return;
     }
 
     // Clear button
     if (input === "clear") {
         calculation.set(null, null, "0");
+        decimalBtn.disabled = false;
         updateScreenText();
 
         return;
