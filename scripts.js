@@ -53,6 +53,12 @@ buttonsArea.addEventListener("click", (e) => {
         }
         changeDisplayNum(e.target.value);
     }
+
+    // Clear button
+    if (e.target.id === "clear") {
+        calculation.set(null, null, "0");
+        updateScreenText();
+    }
 })
 
 function updateScreenText() {
