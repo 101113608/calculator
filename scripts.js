@@ -50,13 +50,18 @@ const calculation = {
     },
 }
 
-const mathOperators = ["/", "*", "-", "+"];
-
-let resetDisplayNum = false;
-
 const screenArea = document.querySelector(".screen-area");
 const buttonsArea = document.querySelector(".buttons-area");
 const decimalBtn = buttonsArea.querySelector("#decimal");
+const mathButtons = {
+    "/": buttonsArea.querySelector("#divide"),
+    "*": buttonsArea.querySelector("#multiply"),
+    "-": buttonsArea.querySelector("#subtract"),
+    "+": buttonsArea.querySelector("#add"),
+}
+
+let resetDisplayNum = false;
+
 
 window.addEventListener("load", (e) => {
     updateScreenText();
@@ -91,13 +96,18 @@ buttonsArea.addEventListener("click", (e) => {
     }
 
     // Math operator buttons
-    if (mathOperators.includes(input)) {
+    if (input in mathButtons) {
         if (!calculation.cacheNum && !calculation.operator) {
             calculation.set(calculation.displayNum, input);
+            highlightBtn(calculation.operator, true);
         } else {
             calculation.displayNum = calculation.operate();
+            highlightBtn(calculation.operator, false);
             updateScreenText();
+
+            // New calculation w/ previous result
             calculation.set(calculation.displayNum, input);
+            highlightBtn(calculation.operator, true);
         }
         resetDisplayNum = true;
         decimalBtn.disabled = false;
@@ -108,6 +118,7 @@ buttonsArea.addEventListener("click", (e) => {
     // Equals button
     if (input === "equals") {
         if (calculation.cacheNum && calculation.operator) {
+            highlightBtn(calculation.operator, false);
             calculation.set(null, null, calculation.operate());
             updateScreenText();
             decimalBtn.disabled = false;
@@ -134,6 +145,9 @@ buttonsArea.addEventListener("click", (e) => {
 
     // Clear button
     if (input === "clear") {
+        if (calculation.operator) {
+            highlightBtn(calculation.operator, false);
+        }
         calculation.set(null, null, "0");
         decimalBtn.disabled = false;
         updateScreenText();
@@ -159,6 +173,14 @@ function changeDisplayNum(inputNum) {
             calculation.displayNum = calculation.displayNum.concat(inputNum);
         }
         updateScreenText();
+    }
+}
+
+function highlightBtn(btn, highlight) {
+    if (highlight) {
+        mathButtons[`${btn}`].classList.add("active");
+    } else {
+        mathButtons[`${btn}`].classList.remove("active");
     }
 }
 
