@@ -1,3 +1,5 @@
+const MAX_CALC_NUM_LENGTH = 9;
+
 const calculation = {
     displayNum: "0",
     cacheNum: null,
@@ -32,7 +34,7 @@ const calculation = {
     },
 }
 
-const MAX_CALC_NUM_LENGTH = 9;
+let resetDisplayNum = false;
 
 const screenArea = document.querySelector(".screen-area");
 const buttonsArea = document.querySelector(".buttons-area");
@@ -45,6 +47,10 @@ buttonsArea.addEventListener("click", (e) => {
 
     // Number button
     if (isDigit(e.target.value)) {
+        if (resetDisplayNum) {
+            calculation.displayNum = "0";
+            resetDisplayNum = false;
+        }
         changeDisplayNum(e.target.value);
     }
 })
