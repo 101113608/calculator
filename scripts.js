@@ -30,7 +30,18 @@ const calculation = {
                 console.error("function operate: Given operator was not valid");
                 break;
         }
-        return result;
+        if (String(result).length > MAX_NUM_LENGTH) {
+            if (String(result).includes(".")) {
+                let number = String(result).slice(0, MAX_NUM_LENGTH + 1);
+                let decimalNum = number.slice(number.indexOf(".") + 1);
+
+                // Round decimal based on length starting from decimal point to last decimal number
+                return Number(number).toFixed(decimalNum.length - 1);
+            } else {
+                result = NaN;
+            }
+        }
+        return String(result);
     },
 }
 
