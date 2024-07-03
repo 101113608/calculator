@@ -2,12 +2,12 @@ const calculation = {
     displayNum: "0",
     cacheNum: null,
     operator: null,
-    set: function(cacheNum, operator, displayNum = this.displayNum) {
+    set: function (cacheNum, operator, displayNum = this.displayNum) {
         this.cacheNum = cacheNum;
         this.operator = operator;
         this.displayNum = displayNum;
     },
-    operate: function() {
+    operate: function () {
         let numOne = +this.cacheNum;
         let numTwo = +this.displayNum;
         let result = 0;
@@ -42,13 +42,19 @@ window.addEventListener("load", (e) => {
 })
 
 buttonsArea.addEventListener("click", (e) => {
-    if (Number(e.target.value) || Number(e.target.value) === 0) {
+
+    // Number button
+    if (isDigit(e.target.value)) {
         changeDisplayNum(e.target.value);
     }
 })
 
 function updateScreenText() {
     screenArea.textContent = calculation.displayNum;
+}
+
+function isDigit(digit) {
+    return (Number(digit) || Number(digit) === 0) && digit !== "";
 }
 
 function changeDisplayNum(inputNum) {
