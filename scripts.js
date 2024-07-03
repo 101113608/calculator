@@ -1,4 +1,4 @@
-const MAX_CALC_NUM_LENGTH = 9;
+const MAX_NUM_LENGTH = 12;
 
 const calculation = {
     displayNum: "0",
@@ -100,7 +100,7 @@ function isDigit(digit) {
 }
 
 function changeDisplayNum(inputNum) {
-    if (calculation.displayNum.length < MAX_CALC_NUM_LENGTH) {
+    if (calculation.displayNum.length < MAX_NUM_LENGTH) {
         if (calculation.displayNum === "0" && inputNum != "0") {
             calculation.displayNum = inputNum;
         }
