@@ -34,6 +34,8 @@ const calculation = {
     },
 }
 
+const mathOperators = ["/", "*", "-", "+"];
+
 let resetDisplayNum = false;
 
 const screenArea = document.querySelector(".screen-area");
@@ -52,6 +54,20 @@ buttonsArea.addEventListener("click", (e) => {
             resetDisplayNum = false;
         }
         changeDisplayNum(e.target.value);
+        return;
+    }
+
+    // Math operator buttons
+    if (mathOperators.includes(e.target.value)) {
+        if (!calculation.cacheNum && !calculation.operator) {
+            calculation.set(calculation.displayNum, e.target.value);
+        } else {
+            calculation.displayNum = calculation.operate();
+            updateScreenText();
+            calculation.set(calculation.displayNum, e.target.value);
+        }
+
+        resetDisplayNum = true;
         return;
     }
 
