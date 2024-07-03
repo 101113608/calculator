@@ -78,6 +78,10 @@ body {
     flex-direction: column;
 }
 
+.operator-buttons button {
+    background-color: darkgray;
+}
+
 .operator-buttons button,
 .number-buttons .row button {
     /* Flex item properties */
@@ -85,4 +89,13 @@ body {
 
     font-size: 30px;
     border-color: lightgrey;
+}
+
+#clear, #backspace {
+    background-color: lightgray;
+}
+
+.operator-buttons .active {
+    border-color: lightcoral;
+    background-color: lightcoral;
 }
