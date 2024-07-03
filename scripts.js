@@ -117,6 +117,21 @@ buttonsArea.addEventListener("click", (e) => {
         return;
     }
 
+    // Backspace button
+    if (input === "backspace") {
+        if (calculation.displayNum.length === 1 || calculation.displayNum === "NaN") {
+            calculation.displayNum = "0";
+        } else {
+            if (calculation.displayNum.at(calculation.displayNum.length - 1) === ".") {
+                decimalBtn.disabled = false;
+            }
+            calculation.displayNum = calculation.displayNum.slice(0, calculation.displayNum.length - 1);
+        }
+        updateScreenText();
+
+        return;
+    }
+
     // Clear button
     if (input === "clear") {
         calculation.set(null, null, "0");
