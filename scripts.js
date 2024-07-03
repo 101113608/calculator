@@ -6,7 +6,30 @@ const calculation = {
         this.cacheNum = cacheNum;
         this.operator = operator;
         this.displayNum = displayNum;
-    }
+    },
+    operate: function() {
+        let numOne = +this.cacheNum;
+        let numTwo = +this.displayNum;
+        let result = 0;
+        switch (this.operator) {
+            case "+":
+                result = add(numOne, numTwo);
+                break;
+            case "-":
+                result = subtract(numOne, numTwo);
+                break;
+            case "*":
+                result = multiply(numOne, numTwo);
+                break;
+            case "/":
+                result = divide(numOne, numTwo);
+                break;
+            default:
+                console.error("function operate: Given operator was not valid");
+                break;
+        }
+        return result;
+    },
 }
 
 const MAX_CALC_NUM_LENGTH = 9;
@@ -38,29 +61,6 @@ function changeDisplayNum(inputNumber) {
         }
         updateScreenText();
     }
-}
-
-function operate(numOne, numTwo, operator) {
-    let result = 0;
-    switch (operator) {
-        case "+":
-            result = add(numOne, numTwo);
-            break;
-        case "-":
-            result = subtract(numOne, numTwo);
-            break;
-        case "*":
-            result = multiply(numOne, numTwo);
-            break;
-        case "/":
-            result = divide(numOne, numTwo);
-            break;
-        default:
-            console.error("function operate: Given operator was not valid");
-            break;
-    }
-
-    return result;
 }
 
 function add(numOne, numTwo) {
