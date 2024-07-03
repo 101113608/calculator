@@ -72,6 +72,16 @@ buttonsArea.addEventListener("click", (e) => {
         return;
     }
 
+    // Equals button
+    if (input === "equals") {
+        if (calculation.cacheNum && calculation.operator) {
+            calculation.set(null, null, calculation.operate());
+            updateScreenText();
+            resetDisplayNum = true;
+        }
+        return;
+    }
+
     // Clear button
     if (input === "clear") {
         calculation.set(null, null, "0");
