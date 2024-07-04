@@ -67,11 +67,14 @@ window.addEventListener("load", (e) => {
     updateScreenText();
 })
 
+window.addEventListener("keyup", (e) => calculatorInput(e));
 buttonsArea.addEventListener("click", (e) => calculatorInput(e));
 
 function calculatorInput(e) {
-    let input = e.target.value ? e.target.value : e.target.id;
+    let input = (e.key ? e.key : e.target.value ? e.target.value : e.target.id)
+                .toLowerCase();
 
+    console.log(input);
     // Number button
     if (isDigit(input)) {
         if (resetDisplayNum) {
@@ -118,7 +121,7 @@ function calculatorInput(e) {
     }
 
     // Equals button
-    if (input === "equals") {
+    if (input === "equals" || input === "=" || input === "enter") {
         if (calculation.cacheNum && calculation.operator) {
             highlightBtn(calculation.operator, false);
             calculation.set(null, null, calculation.operate());
@@ -146,7 +149,7 @@ function calculatorInput(e) {
     }
 
     // Clear button
-    if (input === "clear") {
+    if (input === "clear" || input === "escape") {
         if (calculation.operator) {
             highlightBtn(calculation.operator, false);
         }
