@@ -67,7 +67,9 @@ window.addEventListener("load", (e) => {
     updateScreenText();
 })
 
-buttonsArea.addEventListener("click", (e) => {
+buttonsArea.addEventListener("click", (e) => calculatorInput(e));
+
+function calculatorInput(e) {
     let input = e.target.value ? e.target.value : e.target.id;
 
     // Number button
@@ -154,7 +156,7 @@ buttonsArea.addEventListener("click", (e) => {
 
         return;
     }
-})
+}
 
 function updateScreenText() {
     screenArea.textContent = calculation.displayNum;
